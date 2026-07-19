@@ -1,0 +1,39 @@
+/*  tasks.json =   */ {
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "C(++) 빌드",
+            "type": "shell",
+            "command": "cl",
+            "args": [
+                "${file}",
+                "/Fe:", "${workspaceFolder}\\${fileBasenameNoExtension}.exe",
+                "/Fd:", "${workspaceFolder}\\",
+                "/Fo:", "${workspaceFolder}\\bin\\",
+                "/EHsc",
+                "/Zi"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ],
+        },
+        {
+            "label": "Java 빌드",
+            "type": "shell",
+            "command": "javac",
+            "args": [
+                "${file}",
+                "-d", "${workspaceFolder}\\bin\\"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$javac"
+            ]
+        },
+    ]
+}

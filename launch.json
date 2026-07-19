@@ -1,0 +1,34 @@
+/*  launch.json =   */ {
+    "version": "2.0.0",
+    "configurations": [
+        {
+            "name": "Python 런칭",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "program": "미정",
+            "args": [],
+            "environment": [],
+        },
+        {
+            "name": "C(++) 런칭",
+            "type": "cppdbg",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "program": "미정",
+            "args": [],
+            "environment": [],
+            "stopAtEntry": false,
+            "MIMode": "cl",
+            "preLaunchTask": "C(++) 빌드",
+        },
+        {
+            "name": "Java 런칭",
+            "type": "java",
+            "request": "launch",
+            "mainClass": "미정",
+            "projectName": "${workspaceFolderBasename}",
+            "preLaunchTask": "Java 빌드",
+        }
+    ]
+}
