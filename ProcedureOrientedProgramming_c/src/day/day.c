@@ -1,6 +1,17 @@
 #include "day.h"
 
-static const char get(Day day, const char* formatedString) {
+static const char* get(Day, const char*);
+static int getYesr(Day);
+static unsigned getMonth(Day);
+static unsigned getDate(Day);
+static unsigned age(Day, bool);
+
+static void set(Day*, const char*, const char*);
+static void setYear(Day*, int);
+static void setMonth(Day*, unsigned);
+static void setDate(Day*, unsigned);
+
+static const char* get(Day day, const char* formatedString) {
     char result[11];
     sprintf(result, formatedString, day.year, day.month, day.date);
     return result;
@@ -26,9 +37,11 @@ static unsigned getDate(Day day) {
         return 0;
 }
 
-static unsigned age(Day day) {
+static unsigned age(Day day, bool bioAccurate) {
     unsigned result = 2026;
     result -= day.year;
+    if(bioAccurate == true)
+        result %= 100;
     return result;
 }
 

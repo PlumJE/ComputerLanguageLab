@@ -1,26 +1,24 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "C(++) 빌드",
-			"type": "shell",
-			"command": "cl",
-			"args": [
-				"/nologo",
-				"/EHsc",
-				"/Zi",
-				"/Fe:main.exe",
-				"main.c",
-				"day.c"
-			],
-			"options": {
-				"cwd": "${workspaceFolder}/ProcedureOrientedProgramming_c"
-			},
-			"problemMatcher": ["$msCompile"],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			}
-		}
-	]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "C(++) 빌드",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "if (-not (Test-Path build)) {New-Item -ItemType Directory -Path build | Out-Null}; cl.exe /Fe:ProcedureOrientedProgrammingC.exe /Fd:build/ /Fo:build/ /Zi /EHsc /nologo /I src (Get-ChildItem -Recurse -Path src -Filter *.c | Select-Object -ExpandProperty FullName)"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}\\ProcedureOrientedProgramming_c"
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
 }
