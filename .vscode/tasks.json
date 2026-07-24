@@ -2,40 +2,26 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "ProcedureOrientedProgrammingC 빌드",
             "type": "shell",
-            "label": "C(++) 빌드",
-            "command": "powershell",
+            "command": "cmd",
             "args": [
-                "-Command",
-                // 1. 빌드 폴더 생성 부분
-                "if (-not (Test-Path build)) { New-Item -ItemType Directory -Path build | Out-Null };",
-                
-                // 2. 컴파일러 실행 부분
-                "cl.exe",
-                
-                // 3. 컴파일러 옵션들 (엔터 대신 배열로 분리)
-                "/Fe:ProcedureOrientedProgrammingC.exe",
-                "/Fd:build/",
-                "/Fo:build/",
-                "/utf-8",
+                "/C",
+                "if not exist build mkdir build &&",
+                "cl",
+                "/Fe:ProcedureOrientedProgrammingC",
+                "/Fd:build\\",
+                "/Fo:build\\",
                 "/Zi",
+                "/utf-8",
                 "/EHsc",
                 "/nologo",
                 "/I src",
-                
-                // 4. 소스 파일 탐색 부분
-                "(Get-ChildItem -Recurse -Path src -Filter *.c | Select-Object -ExpandProperty FullName)"
+                "src\\*.c",
             ],
-            "options": {
-                "cwd": "${workspaceFolder}\\ProcedureOrientedProgramming_c"
-            },
-            "problemMatcher": [
-                "$msCompile"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "options": {"cwd": "${workspaceFolder}\\ProcedureOrientedProgrammingC"},
+            "group": {"kind": "build"},
+            "problemMatcher": ["$msCompile"],
         }
     ]
 }

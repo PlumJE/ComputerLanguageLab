@@ -2,16 +2,16 @@
     "version": "2.0.0",
     "configurations": [
         {
-            "name": "C(++) 디버그",
+            "name": "ProcedureOrientedProgrammingC 디버그",
             "type": "cppvsdbg",
             "request": "launch",
             "program": "ProcedureOrientedProgrammingC.exe",
             "args": [],
-            "cwd": "${workspaceFolder}\\ProcedureOrientedProgramming_c",
+            "cwd": "${workspaceFolder}\\ProcedureOrientedProgrammingC",
             "stopAtEntry": false,
             "console": "integratedTerminal",
             "environment": [],
-            "preLaunchTask": "C(++) 빌드"
+            "preLaunchTask": "ProcedureOrientedProgrammingC 빌드"
         }
     ]
 }
