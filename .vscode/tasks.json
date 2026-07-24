@@ -7,7 +7,24 @@
             "command": "powershell",
             "args": [
                 "-Command",
-                "if (-not (Test-Path build)) {New-Item -ItemType Directory -Path build | Out-Null}; cl.exe /Fe:ProcedureOrientedProgrammingC.exe /Fd:build/ /Fo:build/ /utf-8 /Zi /EHsc /nologo /I src (Get-ChildItem -Recurse -Path src -Filter *.c | Select-Object -ExpandProperty FullName)"
+                // 1. 빌드 폴더 생성 부분
+                "if (-not (Test-Path build)) { New-Item -ItemType Directory -Path build | Out-Null };",
+                
+                // 2. 컴파일러 실행 부분
+                "cl.exe",
+                
+                // 3. 컴파일러 옵션들 (엔터 대신 배열로 분리)
+                "/Fe:ProcedureOrientedProgrammingC.exe",
+                "/Fd:build/",
+                "/Fo:build/",
+                "/utf-8",
+                "/Zi",
+                "/EHsc",
+                "/nologo",
+                "/I src",
+                
+                // 4. 소스 파일 탐색 부분
+                "(Get-ChildItem -Recurse -Path src -Filter *.c | Select-Object -ExpandProperty FullName)"
             ],
             "options": {
                 "cwd": "${workspaceFolder}\\ProcedureOrientedProgramming_c"
