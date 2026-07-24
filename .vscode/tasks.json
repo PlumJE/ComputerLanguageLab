@@ -1,26 +1,26 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "C(++) 빌드",
-			"type": "shell",
-			"command": "cl",
-			"args": [
-				"/nologo",
-				"/EHsc",
-				"/Zi",
-				"/Fe:main.exe",
-				"main.c",
-				"day.c"
-			],
-			"options": {
-				"cwd": "${workspaceFolder}/ProcedureOrientedProgramming_c"
-			},
-			"problemMatcher": ["$msCompile"],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			}
-		}
-	]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "ProcedureOrientedProgrammingC 빌드",
+            "type": "shell",
+            "command": "cmd",
+            "args": [
+                "/C",
+                "if not exist build mkdir build &&",
+
+                "cl",
+                "/Fe:ProcedureOrientedProgrammingC",
+                "/Fd:build\\",
+                "/Fo:build\\",
+                "/Zi /utf-8 /EHsc /nologo /I src",
+                "src\\*.c",
+
+                "&& move *.ilk build\\",
+            ],
+            "options": {"cwd": "${workspaceFolder}\\ProcedureOrientedProgrammingC"},
+            "group": {"kind": "build"},
+            "problemMatcher": ["$msCompile"],
+        }
+    ]
 }

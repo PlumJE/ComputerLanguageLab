@@ -1,17 +1,17 @@
 {
-	"version": "0.2.0",
-	"configurations": [
-		{
-			"name": "C(++) 런칭",
-			"type": "cppvsdbg",
-			"request": "launch",
-			"program": "${workspaceFolder}/ProcedureOrientedProgramming_c/main.exe",
-			"args": [],
-			"stopAtEntry": false,
-			"cwd": "${workspaceFolder}/ProcedureOrientedProgramming_c",
-			"environment": [],
-			"preLaunchTask": "C(++) 빌드",
-			"console": "integratedTerminal"
-		}
-	]
+    "version": "2.0.0",
+    "configurations": [
+        {
+            "name": "ProcedureOrientedProgrammingC 디버그",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "ProcedureOrientedProgrammingC.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}\\ProcedureOrientedProgrammingC",
+            "stopAtEntry": false,
+            "console": "integratedTerminal",
+            "environment": [],
+            "preLaunchTask": "ProcedureOrientedProgrammingC 빌드"
+        }
+    ]
 }
