@@ -7,7 +7,7 @@
             "command": "powershell",
             "args": [
                 "-Command",
-                "if (-not (Test-Path build)) {New-Item -ItemType Directory -Path build | Out-Null}; cl.exe /Fe:ProcedureOrientedProgrammingC.exe /Fd:build/ /Fo:build/ /Zi /EHsc /nologo /I src (Get-ChildItem -Recurse -Path src -Filter *.c | Select-Object -ExpandProperty FullName)"
+                "if (-not (Test-Path build)) {New-Item -ItemType Directory -Path build | Out-Null}; cl.exe /Fe:ProcedureOrientedProgrammingC.exe /Fd:build/ /Fo:build/ /utf-8 /Zi /EHsc /nologo /I src (Get-ChildItem -Recurse -Path src -Filter *.c | Select-Object -ExpandProperty FullName)"
             ],
             "options": {
                 "cwd": "${workspaceFolder}\\ProcedureOrientedProgramming_c"

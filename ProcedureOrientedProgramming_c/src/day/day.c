@@ -1,64 +1,43 @@
 #include "day.h"
 
-static const char* get(Day, const char*);
-static int getYesr(Day);
-static unsigned getMonth(Day);
-static unsigned getDate(Day);
-static unsigned age(Day, bool);
-
-static void set(Day*, const char*, const char*);
-static void setYear(Day*, int);
-static void setMonth(Day*, unsigned);
-static void setDate(Day*, unsigned);
-
-static const char* get(Day day, const char* formatedString) {
-    char result[11];
-    sprintf(result, formatedString, day.year, day.month, day.date);
-    return result;
-}
-
+// getters
 static int getYear(Day day) {
-    return day.year;
+    int result = day.year;
+    if(result < 1900)
+        result = 1900 + (result % 100);
+    else if(result > 2099)
+        result = 2000 + (result % 100);
+    return result;
 }
 
 static unsigned getMonth(Day day) {
     unsigned result = day.month;
-    if(result < 13)
-        return result;
-    else
-        return 0;
+    if(result > 12)
+        result = 12;
+    return result;
 }
 
 static unsigned getDate(Day day) {
     unsigned result = day.date;
-    if(result < 32)
-        return result;
-    else
-        return 0;
-}
-
-static unsigned age(Day day, bool bioAccurate) {
-    unsigned result = 2026;
-    result -= day.year;
-    if(bioAccurate == true)
-        result %= 100;
+    if(result > 31)
+        result = 31;
     return result;
 }
 
-static void set(Day* day, const char* string, const char* format) {
-    int year;
-    unsigned month;
-    unsigned date;
-    sscanf_s(string, format, &year, &month, &date);
+static void get(Day day, char* string, const char* format) {
+    int year = getYear(day);
+    unsigned month = getMonth(day);
+    unsigned date = getDate(day);
 
-    setYear(day, year);
-    setMonth(day, month);
-    setDate(day, date);
+    sprintf(string, format, year, month, date);
 }
 
+// setters
 static void setYear(Day* day, int year) {
-    if(year > 2026)
-        year = 2026;
+    if(year < 1900)
+        year = 1900 + (year % 100);
+    else if(year > 2099)
+        year = 2099 + (year % 100);
     day->year = year;
 }
 
@@ -74,18 +53,37 @@ static void setDate(Day* day, unsigned date) {
     day->date = date;
 }
 
+static void set(Day* day, const char* string, const char* format) {
+    int year;
+    unsigned month;
+    unsigned date;
+    sscanf_s(string, format, &year, &month, &date);
+
+    setYear(day, year);
+    setMonth(day, month);
+    setDate(day, date);
+}
+
+// other operations
+static unsigned age(Day day) {
+    unsigned result = 2026 - getYear(day);
+    return result;
+}
+
+
 struct day day() {
     static struct day singleton = {
         .get = get,
         .getYear = getYear,
         .getMonth = getMonth,
         .getDate = getDate,
-        .age = age,
-
+        
         .set = set,
         .setYear = setYear,
         .setMonth = setMonth,
-        .setDate = setDate
+        .setDate = setDate,
+
+        .age = age,
     };
     return singleton;
 }
