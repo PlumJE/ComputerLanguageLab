@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "C:/Users/lje64/vscode-workspace/ComputerLanguageLab/procedure_oriented_programming_c/src"
+    "cmake.sourceDirectory": "${workspaceFolder}/procedure_oriented_programming_c",
+    "cmake.buildDirectory": "${workspaceFolder}/procedure_oriented_programming_c/build"
 }
