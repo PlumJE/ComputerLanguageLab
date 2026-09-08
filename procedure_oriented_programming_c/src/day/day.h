@@ -6,7 +6,7 @@
 #include <ctype.h>
 
 
-// 가변 멀티턴 필드 구조체
+// 데이터 클래스
 typedef struct {
     int year;
     unsigned month;
@@ -15,7 +15,7 @@ typedef struct {
 Day;
 
 
-// 불변 싱글턴 메소드 구조체
+// 프로시저 인스턴스
 struct day {
     void (*get)(Day, char*, const char*);
     int (*getYear)(Day);
@@ -27,6 +27,6 @@ struct day {
     void (*setMonth)(Day*, unsigned);
     void (*setDate)(Day*, unsigned);
 
-    unsigned (*age)(Day);
+    unsigned (*getAge)(Day);
 };
 extern struct day day();

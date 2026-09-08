@@ -64,15 +64,15 @@ static void set(Day* day, const char* string, const char* format) {
     setDate(day, date);
 }
 
-// 다른 메소드들
-static unsigned age(Day day) {
+// other procedures
+static unsigned getAge(Day day) {
     unsigned result = 2026 - getYear(day);
     return result;
 }
 
-// 메소드 구조체
+
 struct day day() {
-    static struct day singleton = {
+    static struct day _ = {
         .get = get,
         .getYear = getYear,
         .getMonth = getMonth,
@@ -83,7 +83,7 @@ struct day day() {
         .setMonth = setMonth,
         .setDate = setDate,
 
-        .age = age,
+        .getAge = getAge,
     };
-    return singleton;
+    return _;
 }
