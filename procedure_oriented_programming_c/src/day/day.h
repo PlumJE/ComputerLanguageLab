@@ -16,7 +16,7 @@ Day;
 
 
 // 프로시저 인스턴스
-struct day {
+extern struct day {
     void (*get)(Day, char*, const char*);
     int (*getYear)(Day);
     unsigned (*getMonth)(Day);
@@ -28,5 +28,5 @@ struct day {
     void (*setDate)(Day*, unsigned);
 
     unsigned (*getAge)(Day);
-};
-extern struct day day();
+}
+day();
