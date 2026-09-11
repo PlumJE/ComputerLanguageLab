@@ -1,0 +1,17 @@
+# 빌드 정보(필수)
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+# 프로젝트 정보
+[project]
+name = "django_lab"
+version = "1.0.0"
+requires-python = ">=3.12"
+dependencies = [
+	"Django>=5.0,<6.0",
+]
+
+# 각 도구 정보
+[tool.hatch.build.targets.wheel]
+packages = ["django_lab", "django_app"]
