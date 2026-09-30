@@ -3,3 +3,4 @@ procedure_oriented_programming_c/build/*
 
 # pnpm nodules
 node_modules/*
+node_modules
